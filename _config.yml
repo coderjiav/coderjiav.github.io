@@ -16,6 +16,7 @@
 name: Awesome Memo For Books 
 title: Awesome Memo For Books 
 email: coderjiav@gmail.com
+paginate: 2
 description: > # this means to ignore newlines until "baseurl:"
   This blog is for memo some summary after read books
 baseurl: "" # the subpath of your site, e.g. /blog
