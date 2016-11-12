@@ -24,10 +24,17 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: miky.ma
 github_username:  coderjiav
 
+paginate: 8
+paginate_path: "/page:num"
+
+tag_page_layout: tag_page
+tag_page_dir: tag
+
 # Build settings
 markdown: kramdown
 theme: minima
-gems:
+gems: [jekyll-paginate]
+gems: 
   - jekyll-feed
 exclude:
   - Gemfile

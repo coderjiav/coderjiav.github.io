@@ -1,0 +1,21 @@
+---
+layout: page
+title: Tags
+footer: false
+permalink: /tags/
+---
+<div id="blog-archives">
+{% for tag in site.tags %}
+  {% capture tag_name %}{{ tag | first }}{% endcapture %}
+  <h2 id="#{{ tag_name | slugize }}">{{ tag_name }}</h2>
+  <a name="{{ tag_name | slugize }}"></a>
+  {% for post in site.tags[tag_name] %}
+  <article>
+    <h3>
+       <span style="padding:0 15px;">{{ post.date | date: "%m/%d/%Y %R" }}</span>
+       <a href="{{ root_url }}{{ post.url }}">{{post.title}}</a>
+    </h3>
+  </article>
+  {% endfor %}
+{% endfor %}
+</div>
