@@ -17,27 +17,30 @@ C use = for assignment and == for comparison. Moreover, C treats = as an operato
 
 This convenience causes a potential problem: one can inadventently write an assignment where intended a comparison. Refer below code.
 
-```C++
+```cpp
     if (x =y)
-
         break;  
 ```
 This code intended to check if x is equal to y, but now the behavior of this expression is different. It assign y's value to x, then check if x is equal to zero. The break will excute whenever y is not zero. 
 
 Consider the following loop, which intended to skip blanks, tabs and newlines in a file
 
-```C++
+```cpp
     while (c = ' ' || c == '\t' || c == '\n')
         c = getc(f);
 ```
 Notice the first = , it should be ==; Because the = operator has lower precedence than the || operator, the 'comparison' actually assigns to c the value of entire expression:
-```C
+
+
+```cpp
     ' ' || c == '\t' || c == '\n'
 ```
 Since this is a boolean value and ' ' is not zero, so the test value is always true; this maybe cause the loop runing forever.
 
 Consider following example which we should use = instand of ==:
-```C++
+
+
+```cpp
     if ( (  filedesc == open(argv[i], 0) ) < 0) {
         error();
     }
@@ -70,20 +73,24 @@ Single and double quotes mean very different things in C, and confusing them in 
 
 > A string enclosed in double quotes, on the other hand, is a short-hand way of writing a pointer to the initial character of a nameless array that has been initialized with the characters between the quotes and an extra character whose binary value is zero.
 
-```C
+```cpp
     printf("Hello, World\n");
     is equivalent to
     char hello[] = {'H', 'e', 'l', 'l', 'o', ',' ,'W', 'o', 'r', 'l', 'd', '\n', 0}
 ```
 Because a character in single quote represents an integer and a character in double quotes represents a pointer, compiler type checking will ususlly catch places where one is used for the other. Thus, the following code will yield an error message because '/' is not a character pointer.
-```C
+
+
+```cpp
     char *slash = '/';
 ```
 
 However, some implementations don't check argument types, particularly arguments to printf.Thus saying
-```C
+
+
+```cpp
     printf('\n');
-instead of 
+        instead of 
     printf("\n");
 ```
 may result in a surprise at run time instead of a compiler diagnostic.
